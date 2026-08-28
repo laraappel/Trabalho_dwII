@@ -1,12 +1,12 @@
-import { TEAM_IMAGES, ROLE_COLORS, TIMES } from "../data/initialData";
+import { ROLE_COLORS, TIMES } from "../data/initialData";
 
 function papelBadgeColor(papel) {
   return ROLE_COLORS[papel] || "#6E6E6E";
 }
 
-// Props: empresa (nome), data (objeto completo, usa data.alunos/teamNames)
-export default function CompanyBlock({ empresa, data }) {
-  const imgs = TEAM_IMAGES[empresa] || {};
+
+export default function CompanyBlock({ empresa, data, imageSet }) {
+  const imgs = imageSet || {};
   const sm = data.alunos.find(a => a.papel === "Scrum Master" && a.empresa === empresa);
   const owner = data.alunos.find(a => a.papel === "Owner/Stakeholder" && a.empresa === empresa);
   const teamRoster = time =>
@@ -26,7 +26,11 @@ export default function CompanyBlock({ empresa, data }) {
       </div>
       <div className="teams-grid">
         {TIMES.map(t => {
-          const roster = teamRoster(t).sort((a, b) => (a.papel === "Product Owner" ? -1 : 1));
+          const roster = teamRoster(t).sort(
+              (a, b) =>
+                Number(b.papel === "Product Owner") -
+                Number(a.papel === "Product Owner")
+            );
           return (
             <div className="team-card" key={t}>
               <img className="team-img" src={imgs[t] || ""} alt={data.teamNames[empresa][t]} />

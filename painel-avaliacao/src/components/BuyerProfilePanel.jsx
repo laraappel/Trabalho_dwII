@@ -3,7 +3,7 @@ import SimNaoSelect from "./campos/SimNaoSelect";
 import ScoreSelect from "./campos/ScoreSelect";
 import ObsInput from "./campos/ObsInput";
 
-// Props: rows (data.buyerProf), onFieldChange(path, value)
+
 export default function BuyerProfilePanel({ rows, onFieldChange }) {
   return (
     <div className="panel">

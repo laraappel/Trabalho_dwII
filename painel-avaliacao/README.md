@@ -1,36 +1,73 @@
-# Trabalho_dw
-Turma: 2F
-Integrantes: Lara Leticia Jung Appel, Carina Muller e Marya reis
+# Painel de Avaliação — Simulação Scrum Competitiva
+## Integrantes
 
-Arquivos prontos aqui:
-- `src/data/initialData.js`
-- `src/utils/sprintLabel.js` (também usado pela Parte 3 — combinem pra não duplicar)
-- `src/components/SetupPanel.jsx`
-- `src/components/ScrumMasterPanel.jsx`
-- `src/components/OwnerPanel.jsx`
-- `src/components/ProductOwnerPanel.jsx`
-- `src/components/DevPanel.jsx`
+- Lara Leticia Jung Appel
+- Carina Muller
+- Marya Reis
 
-## Dependências da Parte 1 (precisa existir antes de rodar)
-- `src/components/campos/SimNaoSelect.jsx` — recebe `{ value, onChange }`, chama `onChange(novoValor)`
-- `src/components/campos/ScoreSelect.jsx` — mesmo formato, valores 1 a 5
-- `src/components/campos/ObsInput.jsx` — recebe `{ value, onChange, placeholder }`
-- Uma função `onFieldChange(path, value)` no `App.jsx`, que atualiza o estado global
-  imutavelmente a partir de um "caminho" tipo `"sm.3.nota"` ou `"weights.dev"`
-  (é o equivalente ao `setByPath` do app.js original, só que sem mutar o STATE direto)
+## Tecnologias
 
-## Atenção especial no SetupPanel
-Trocar o nome da Empresa A ou B (`onRenameEmpresa("A", novoNome)`) não é um campo
-comum — o nome da empresa é também chave de `teamNames`, `corrupcao.empresaCorruptora`
-etc. Isso precisa de uma função própria no App.jsx (equivalente ao `renameEmpresa`
-do app.js original), não do `onFieldChange` genérico. Combinem esse detalhe com
-quem fizer a Parte 1 antes de integrar.
+- React
+- Vite
+- JavaScript (JSX)
+- CSS
+- ESLint
+- SheetJS para importação de listas de alunos em Excel
 
-## Onde plugar no App.jsx
-```jsx
-{tab === "setup" && <SetupPanel meta={state.meta} teamNames={state.teamNames} weights={state.weights} onFieldChange={onFieldChange} onRenameEmpresa={onRenameEmpresa} />}
-{tab === "sm" && <ScrumMasterPanel rows={state.sm} onFieldChange={onFieldChange} />}
-{tab === "owner" && <OwnerPanel rows={state.owner} onFieldChange={onFieldChange} />}
-{tab === "po" && <ProductOwnerPanel rows={state.po} onFieldChange={onFieldChange} />}
-{tab === "dev" && <DevPanel rows={state.dev} onFieldChange={onFieldChange} />}
+## Instalação
+
+### Pré-requisitos
+
+- Node.js instalado (versão LTS recomendada)
+- npm
+
+### Passo a passo
+
+1. Clone ou baixe o repositório.
+2. Entre na pasta do projeto:
+
+```bash
+cd Trabalho_dwII/painel-avaliacao
 ```
+
+3. Instale as dependências:
+
+```bash
+npm install
+```
+
+4. Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+5. Abra no navegador o endereço informado pelo Vite, normalmente `http://localhost:5173`.
+
+### Outros comandos
+
+Verificar o código com ESLint:
+
+```bash
+npm run lint
+```
+
+Gerar a versão de produção:
+
+```bash
+npm run build
+```
+
+Visualizar a versão de produção localmente:
+
+```bash
+npm run preview
+```
+
+
+## Observações
+
+- O `localStorage` é específico do navegador e do dispositivo em que o painel está sendo utilizado.
+- O arquivo JSON é a forma recomendada para transportar uma simulação completa para outro navegador ou computador.
+- A importação de Excel utiliza a biblioteca SheetJS carregada pelo `index.html`; por isso, a importação `.xlsx/.xls` depende de conexão com a internet para carregar essa biblioteca.
+- A hospedagem do sistema ainda será configurada e não faz parte das instruções de instalação local deste README.

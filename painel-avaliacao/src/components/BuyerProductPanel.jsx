@@ -3,7 +3,7 @@ import SimNaoSelect from "./campos/SimNaoSelect";
 import ScoreSelect from "./campos/ScoreSelect";
 import DecisaoSelect from "./campos/DecisaoSelect";
 
-// Props: rows (data.buyerProduct), onFieldChange(path, value)
+
 export default function BuyerProductPanel({ rows, onFieldChange }) {
   return (
     <div className="panel">
